@@ -1,0 +1,5 @@
+pgadmin/
+postgres/
+docker-compose.yml
+.env
+# .gitignore
