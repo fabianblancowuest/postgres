@@ -16,3 +16,10 @@ select
 
 from
     users;
+
+-- Actualización de tabla con nombre y apellido por separado
+UPDATE
+    users
+SET
+    first_name = SUBSTRING(name, 0, POSITION(' ' in name)),
+    last_name = SUBSTRING(name, POSITION(' ' in name) + 1);
