@@ -11,3 +11,17 @@ order by followers desc;
 
 -- Funciones agregadas - MAX MIN COUNT ROUND AVG
 SELECT COUNT(*) AS total_users, MIN(followers) as min_followers, MAX(followers) as max_followers, ROUND(AVG(followers)) as avg_followers FROM users;
+
+-- Group By
+SELECT
+    COUNT(*) as total_users,
+    followers
+from
+    users
+where
+    followers BETWEEN 4500
+    AND 4999
+GROUP BY
+    followers
+ORDER BY
+    followers DESC;
