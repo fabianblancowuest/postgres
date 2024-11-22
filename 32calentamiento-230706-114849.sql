@@ -25,3 +25,6 @@ GROUP BY
     followers
 ORDER BY
     followers DESC;
+
+-- Having -> Se utitliza con funciones de agregación, va siempre despues del GROUP BY y antes del ORDER BY
+SELECT count(*) total_by_country, country FROM users group by country having count(*) > 6 order by count(*) desc;
