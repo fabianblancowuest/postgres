@@ -32,3 +32,6 @@ SELECT count(*) total_by_country, country FROM users group by country having cou
 
 -- La palabra clave DISTINCT en la cláusula SELECT se utiliza para eliminar las filas duplicadas y mostrar una lista única de valores. En otras palabras, la palabra clave DISTINCT recupera valores únicos de una tabla.
 select DISTINCT country from users;
+
+-- Group By con otras funciones(tarea)
+select email, SUBSTRING(email, POSITION('@' in email) + 1) AS "domain" from users;
