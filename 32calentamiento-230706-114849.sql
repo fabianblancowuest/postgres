@@ -35,3 +35,6 @@ select DISTINCT country from users;
 
 -- Group By con otras funciones(tarea)
 select email, SUBSTRING(email, POSITION('@' in email) + 1) AS "domain" from users;
+
+-- Group By con otras funciones
+select count(*), SUBSTRING(email, POSITION('@' in email) + 1) AS dominio from users GROUP by dominio having count(*) > 1 order by dominio ASC;
