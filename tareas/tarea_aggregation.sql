@@ -1,16 +1,16 @@
 -- SELECT * FROM users;
 -- 1. Cuantos usuarios tenemos con cuentas @google.com
 -- Tip: count, like
-SELECT COUNT(*) AS google_users FROM users WHERE email LIKE SUBSTRING(email, POSITION('@google' IN email));
+SELECT COUNT(*) AS google_users FROM users WHERE email LIKE '%google.com';
 
 
 -- 2. De qué países son los usuarios con cuentas de @google.com
 -- Tip: distinct
-SELECT DISTINCT country FROM users WHERE email LIKE SUBSTRING(email, POSITION('@google' IN email));
+SELECT DISTINCT country FROM users WHERE email LIKE '%@google.com';
 
 -- 3. Cuantos usuarios hay por país (country)
 -- Tip: Group by
-SELECT  country, COUNT(*) AS google_users FROM users WHERE email LIKE SUBSTRING(email, POSITION('@google' IN email)) GROUP BY country;
+SELECT country, COUNT(*) AS users_by_country FROM users GROUP BY country;
 
 
 -- 4. Listado de direcciones IP de todos los usuarios de Iceland
@@ -20,7 +20,7 @@ SELECT first_name, last_name, country, last_connection FROM users WHERE country=
 
 -- 5. Cuantos de esos usuarios (query anterior) tiene dirección IP
 -- que incia en 112.XXX.XXX.XXX
-SELECT first_name, last_name, country, last_connection FROM users WHERE country='Iceland' AND last_connection LIKE '112.%';
+SELECT COUNT(*) FROM users WHERE country='Iceland' AND last_connection LIKE '112.%' GROUP BY country;
 
 
 -- 6. Listado de usuarios de Iceland, tienen dirección IP
@@ -44,4 +44,4 @@ SELECT first_name, last_name, country FROM users WHERE country IN('Mexico', 'Hon
 
 -- 9. Del query anterior, cuente cuántas personas hay por país
 -- Ordene los resultados por País asc
-SELECT country, COUNT(country) AS users_by_country FROM users WHERE country IN('Mexico', 'Honduras', 'Costa Rica') GROUP BY country;
+SELECT country, COUNT(country) AS users_by_country FROM users WHERE country IN('Mexico', 'Honduras', 'Costa Rica') GROUP BY country ORDER BY country ASC;
