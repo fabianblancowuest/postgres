@@ -18,3 +18,7 @@ ADD
     CHECK(
         continent IN('Europe', 'South America', 'North America', 'Oceania', 'Antarctica', 'Africa', 'Asia', 'Central America')
     );
+
+-- Eliminar el CONSTRAINT CHECK anterior
+ALTER TABLE country
+DROP CONSTRAINT country_continent_check6;
