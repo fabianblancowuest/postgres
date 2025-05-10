@@ -18,3 +18,18 @@ ALTER TABLE countrylanguage ADD PRIMARY KEY (countrycode, language);
 -- Para que no permita negativos ni números superiores a 100
 ALTER TABLE countrylanguage ADD CHECK(percentage >=0 AND percentage <= 100);
 
+SELECT * FROM CITY;
+
+
+-- 5. Crear un índice único en city, para que no permita duplicados
+-- en los campos name, countrycode y district
+-- Este índice se llama "unique_name_countrycode_district" y se crea en la tabla city
+-- Este índice se crea en los campos name, countrycode y district
+CREATE UNIQUE INDEX "unique_name_countrycode_district" on city (name, countrycode, district);
+
+-- 6. Crear un índice en city, para que no permita duplicados
+-- en el campo district
+CREATE INDEX "index_district" on city (district);
+
+select * from city where name='Jinzhou';
+
