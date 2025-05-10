@@ -33,3 +33,15 @@ CREATE INDEX "index_district" on city (district);
 
 select * from city where name='Jinzhou';
 
+SELECT * FROM city where countrycode = 'AFG';
+
+-- Creamos llave foránea en city, para que countrycode haga referencia a code de country
+ALTER TABLE city ADD CONSTRAINT fk_country_code FOREIGN KEY (countrycode) REFERENCES country(code);
+
+select * from country order by "name";
+
+-- Insertamos un registro en country
+-- Este registro tiene un código de país que no existe en la tabla city
+-- y por lo tanto no se puede insertar
+INSERT INTO country
+		values('AFG', 'Afghanistan', 'Asia', 'Southern Asia', 652860, 1919, 40000000, 62, 69000000, NULL, 'Afghanistan', 'Totalitarian', NULL, NULL, 'AF');
