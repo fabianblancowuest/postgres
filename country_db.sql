@@ -7,3 +7,6 @@ DELETE FROM country WHERE code='NLD' AND code2='NA';
 
 -- Añadimos la llave primaria
 ALTER TABLE country ADD PRIMARY KEY (code);
+
+-- Añadir CONSTRAINT CHECK para verificar que en el campo surfacearea se carguen datos con valores positivos
+ALTER TABLE country ADD CHECK(surfacearea >= 0);
