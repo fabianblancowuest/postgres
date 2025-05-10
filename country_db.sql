@@ -22,3 +22,8 @@ ADD
 -- Eliminar el CONSTRAINT CHECK anterior
 ALTER TABLE country
 DROP CONSTRAINT country_continent_check6;
+
+SELECT * FROM country WHERE region = 'Central America';
+
+-- Actualizar el campo continent para los registros que tienen region = 'Central America'
+UPDATE country SET continent = 'Central America' WHERE region = 'Central America';
