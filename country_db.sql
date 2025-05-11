@@ -46,3 +46,19 @@ CREATE UNIQUE INDEX "unique_country_name" on country (name);
 -- Este índice se utiliza para mejorar el rendimiento de las consultas que filtran por continente
 -- El índice se llama "country_continent" y se crea en la tabla country
 CREATE INDEX "country_continent" on country (continent);
+
+-- Insertamos los contientes en la tabla continent utilizandos los continentes de la tabla country
+insert into continent(name) select distinct continent from country order by continent;
+
+-- Obtener el id de la secuencia
+SELECT pg_get_serial_sequence('continent', 'code');
+
+-- Resetear la secuencia para que vuelva a empezar desde 1
+ALTER SEQUENCE public.continent_code_seq RESTART WITH 1;
+
+-- Verificar el valor actual de la secuencia
+SELECT nextval('public.continent_code_seq');
+
+-- Resetear la tabla perdiendo los datos
+-- Esto eliminará todos los registros de la tabla continent y reiniciará el contador de la secuencia
+TRUNCATE TABLE continent RESTART IDENTITY;
