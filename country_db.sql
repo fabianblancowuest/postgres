@@ -62,3 +62,11 @@ SELECT nextval('public.continent_code_seq');
 -- Resetear la tabla perdiendo los datos
 -- Esto eliminará todos los registros de la tabla continent y reiniciará el contador de la secuencia
 TRUNCATE TABLE continent RESTART IDENTITY;
+
+-- Insertamos todos los registros de la tabla country en la tabla country_backup para hacer una copia de seguridad
+INSERT INTO country_backup SELECT * from country;
+
+SELECT * from country;
+
+-- Eliminamos el CONSTRAINT CHECK
+ALTER TABLE country DROP CONSTRAINT country_continent_check;
