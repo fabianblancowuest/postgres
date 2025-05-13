@@ -70,3 +70,13 @@ SELECT * from country;
 
 -- Eliminamos el CONSTRAINT CHECK
 ALTER TABLE country DROP CONSTRAINT country_continent_check;
+
+INSERT INTO country_backup SELECT * from country;
+
+ALTER TABLE country DROP CONSTRAINT country_continent_check;
+
+SELECT a.name, a.continent,  ( select code FROM continent b WHERE b.name = a.continent ) from country a;
+
+update country a set continent = ( select code FROM continent b WHERE b.name = a.continent );
+
+select * from country;
