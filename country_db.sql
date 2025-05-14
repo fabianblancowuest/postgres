@@ -80,3 +80,6 @@ SELECT a.name, a.continent,  ( select code FROM continent b WHERE b.name = a.con
 update country a set continent = ( select code FROM continent b WHERE b.name = a.continent );
 
 select * from country;
+
+-- Castear el campo continent a INT4
+ALTER TABLE country ALTER COLUMN continent TYPE INT4 USING continent::INTEGER;
