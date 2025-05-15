@@ -10,3 +10,8 @@ select a."name" as country, b."name" as continent from country a inner join cont
 
 -- Alterar la secuencia
 ALTER SEQUENCE continent_code_seq RESTART WITH 8;
+
+-- Consulta entre dos tablas usando full outer join
+-- Esta consulta es para ver los paises que no tienen continente
+-- y los continentes que no tienen paises
+SELECT a."name" as country, a.continent as continent_code, b."name" as continent_name FROM country a FULL OUTER JOIN continent b ON a.continent = b.code order by a."name" desc;
