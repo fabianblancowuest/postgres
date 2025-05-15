@@ -7,3 +7,6 @@ select a."name" as country, b."name" from country a, continent b where a.contine
 
 -- Consulta entre dos tablas usando inner join
 select a."name" as country, b."name" as continent from country a inner join continent b on a.continent = b.code order by a."name";
+
+-- Alterar la secuencia
+ALTER SEQUENCE continent_code_seq RESTART WITH 8;
