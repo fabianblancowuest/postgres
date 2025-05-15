@@ -40,3 +40,4 @@ ALTER TABLE countrylanguage ALTER COLUMN languagecode SET NOT NULL;
 
 -- Revisar lo creado
 SELECT * FROM countrylanguage;
+
