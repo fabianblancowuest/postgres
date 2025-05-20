@@ -15,3 +15,14 @@ ALTER SEQUENCE continent_code_seq RESTART WITH 8;
 -- Esta consulta es para ver los paises que no tienen continente
 -- y los continentes que no tienen paises
 SELECT a."name" as country, a.continent as continent_code, b."name" as continent_name FROM country a FULL OUTER JOIN continent b ON a.continent = b.code order by a."name" desc;
+
+SELECT * FROM continent;
+
+-- Consulta entre dos tablas usando right outer join con exclusión
+-- Esta consulta es para ver los continentes que no tienen paises asociados
+-- y los paises que no tienen continente asociado
+SELECT *
+FROM country A
+RIGHT OUTER JOIN continent B 
+ON A.continent = B.code
+WHERE A.continent IS NULL;
