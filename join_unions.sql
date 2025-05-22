@@ -26,3 +26,9 @@ FROM country A
 RIGHT OUTER JOIN continent B 
 ON A.continent = B.code
 WHERE A.continent IS NULL;
+
+-- Aggregations + Joins
+
+(SELECT COUNT(a."name") AS TOTAL_COUNTRIES, b."name" FROM country a FULL OUTER JOIN continent b ON a.continent = b.code GROUP BY  b."name")
+UNION
+(SELECT COUNT(a."name") AS TOTAL_COUNTRIES, b."name" FROM country a INNER JOIN continent b ON a.continent = b.code GROUP BY  b."name") ORDER BY TOTAL_COUNTRIES;
