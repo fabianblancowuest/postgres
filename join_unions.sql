@@ -32,3 +32,15 @@ WHERE A.continent IS NULL;
 (SELECT COUNT(a."name") AS TOTAL_COUNTRIES, b."name" FROM country a FULL OUTER JOIN continent b ON a.continent = b.code GROUP BY  b."name")
 UNION
 (SELECT COUNT(a."name") AS TOTAL_COUNTRIES, b."name" FROM country a INNER JOIN continent b ON a.continent = b.code GROUP BY  b."name") ORDER BY TOTAL_COUNTRIES;
+
+
+-- Count Union - Tarea
+
+(SELECT COUNT(*) AS TOTAL_COUNTRIES, b."name" FROM country a INNER JOIN continent b ON a.continent = b.code WHERE b."name" NOT LIKE '%America%' GROUP BY  b."name")
+UNION
+(SELECT COUNT(*) AS TOTAL_COUNTRIES, 'America' FROM country a INNER JOIN continent b ON a.continent = b.code WHERE b."name" LIKE '%America%') ORDER BY TOTAL_COUNTRIES;
+
+--  Count Union - Con índices
+(SELECT COUNT(*) AS TOTAL_COUNTRIES, b."name" FROM country a INNER JOIN continent b ON a.continent = b.code WHERE b.code NOT IN (4,6,8) GROUP BY  b."name")
+UNION
+(SELECT COUNT(*) AS TOTAL_COUNTRIES, 'America' FROM country a INNER JOIN continent b ON a.continent = b.code WHERE b.code IN (4,6,8)) ORDER BY TOTAL_COUNTRIES;
