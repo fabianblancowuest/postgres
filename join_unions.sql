@@ -44,3 +44,6 @@ UNION
 (SELECT COUNT(*) AS TOTAL_COUNTRIES, b."name" FROM country a INNER JOIN continent b ON a.continent = b.code WHERE b.code NOT IN (4,6,8) GROUP BY  b."name")
 UNION
 (SELECT COUNT(*) AS TOTAL_COUNTRIES, 'America' FROM country a INNER JOIN continent b ON a.continent = b.code WHERE b.code IN (4,6,8)) ORDER BY TOTAL_COUNTRIES;
+
+-- Mostrar el país con más ciudades
+SELECT COUNT(*), country."name" from city INNER JOIN country ON city.countrycode = country.code GROUP by country."name" order by count(*) desc LIMIT 1;
