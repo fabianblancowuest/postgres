@@ -59,3 +59,11 @@ FROM
 WHERE
     a.isofficial = TRUE
 ) as totales GROUP by continent order by count(*);
+
+-- Cuarta relación en el query
+SELECT DISTINCT d."name", c."name" as continent
+FROM countrylanguage a
+INNER JOIN country b ON a.countrycode = b.code
+INNER JOIN continent c ON b.continent = c.code
+INNER JOIN "language" d ON a.languagecode = d.code
+WHERE a.isofficial = TRUE ORDER BY continent;
