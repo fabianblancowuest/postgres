@@ -47,3 +47,15 @@ UNION
 
 -- Mostrar el país con más ciudades
 SELECT COUNT(*), country."name" from city INNER JOIN country ON city.countrycode = country.code GROUP by country."name" order by count(*) desc LIMIT 1;
+
+-- Multiples Joins con agrupaciones
+SELECT count(*), continent from (
+   select DISTINCT a."language",
+    c."name" as continent
+FROM
+    countrylanguage a
+    INNER JOIN country b ON a.countrycode = b.code
+    INNER JOIN continent c ON b.continent = c.code
+WHERE
+    a.isofficial = TRUE
+) as totales GROUP by continent order by count(*);
